@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+<style>
+	:root {
+		--light-shades: #f4f4f0;
+		--light-accent: #dd9462;
+		--dark-accent: #7a8190;
+		--dark-shades: #84384e;
+		--brand-color: #f0c492;
+	}
+	body {
+		font-family: 'Calistoga', cursive;
+		margin: 0;
+		padding: 0;
+		background-color: var(--light-shades);
+	}
+
+	label {
+		font-size: 1.5rem;
+	}
+
+	input[type='text'] {
+		background-color: var(--light-shade);
+		border: 3px solid var(--brand-color);
+		padding: 0.5rem;
+		font-size: 1.1rem;
+	}
+
+	select {
+		background-color: var(--light-shade);
+		border: 3px solid var(--brand-color);
+		padding: 0.5rem;
+		font-size: 1.1rem;
+	}
+</style>
