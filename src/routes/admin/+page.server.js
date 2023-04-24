@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import User from '../../models/AdminModel';
+import User from '$models/AdminModel';
 import { MONGO_URL } from '$env/static/private';
 import { JWT_SECRET } from '$env/static/private';
 import { error, redirect } from '@sveltejs/kit';
@@ -20,7 +20,7 @@ export const actions = {
 
 		if (await bcrypt.compare(password, user.password)) {
 			await mongoose.disconnect();
-			let token = sign({ username: user.username, name: user.name }, JWT_SECRET);
+			let token = sign({ username: user.username, name: user.name, id: user._id }, JWT_SECRET);
 			cookies.set('token', token, {
 				path: '/',
 				httpOnly: true,

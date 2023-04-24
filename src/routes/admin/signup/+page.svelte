@@ -25,7 +25,7 @@
             <label for="code">Code</label>
             <input type="text" name="code" />
         </FormGroup> -->
-		<button class="button" formaction="?/signup">Signup</button>
+		<Button formaction="?/signup">Signup</Button>
 	</form>
 	{#if form?.success}
 		<p>User created successfully</p>
@@ -45,14 +45,5 @@
 		gap: 2rem;
 		max-width: 60%;
 		margin: 1rem auto;
-	}
-
-	.button {
-		font-family: 'Calistoga', cursive;
-		padding: 0.5rem;
-		font-size: 1rem;
-		border: 3px solid var(--light-accent);
-		border-radius: 5px;
-		background-color: var(--brand-color);
 	}
 </style>

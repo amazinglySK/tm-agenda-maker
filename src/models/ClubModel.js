@@ -1,13 +1,14 @@
-import { SchemaTypes } from 'mongoose';
 import { Schema, model } from 'mongoose';
+import { nanoid } from 'nanoid';
 
 const ClubSchema = new Schema({
 	name: String,
-	club_id: { type: SchemaTypes.ObjectId, ref: 'club' },
-	managers: { type: [{ type: SchemaTypes.ObjectId, ref: 'admin' }] },
-	invite_code: String
+	club_id: { type: String, default: nanoid(10), required: true },
+	invite_code: { type: String, default: nanoid(8), required: true },
+	club_location: String,
+	image_link: String
 });
 
-const ClubModel = model('admin', ClubSchema);
+const ClubModel = model('club', ClubSchema);
 
 export default ClubModel;

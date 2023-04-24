@@ -7,26 +7,29 @@
 <main>
 	<div class="greeting">
 		<h2>Hello User</h2>
-		<a href="/admin/new">Create a new meeting</a>
+		<a href="/admin/new">Create a new club</a>
 	</div>
-	<div class="meetings">
-		<div class="meeting-card">
-			<h3>Meeting no. 165</h3>
-			<p>Date : 25/04/23</p>
+	<div class="clubs">
+		<div class="club-card">
+			<img
+				src="https://toastmasterscdn.azureedge.net/medias/images/brand-items/gavelclublogored.png"
+				alt=""
+				class="club-img"
+			/>
+			<h3>Rising Stars Gavel Club</h3>
+			<p>Sharjah</p>
 		</div>
-		<div class="meeting-card">
-			<h3>Meeting no. 165</h3>
-			<p>Date : 25/04/23</p>
-		</div>
-		<div class="meeting-card">
-			<h3>Meeting no. 165</h3>
-			<p>Date : 25/04/23</p>
-		</div>
-		<div class="meeting-card">
-			<h3>Meeting no. 165</h3>
-			<p>Date : 25/04/23</p>
+		<div class="club-card">
+			<img
+				src="https://toastmasterscdn.azureedge.net/medias/images/brand-items/gavelclublogored.png"
+				alt=""
+				class="club-img"
+			/>
+			<h3>Rising Stars Gavel Club</h3>
+			<p>Sharjah</p>
 		</div>
 	</div>
+	<a href="/admin/join">Join a club</a>
 </main>
 
 <style>
@@ -47,15 +50,22 @@
 		align-items: center;
 	}
 
-	.meetings {
+	.clubs {
 		display: grid;
 		gap: 2rem;
 		width: 80%;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		margin: auto;
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	}
 
-	.meeting-card {
+	.club-card {
 		padding: 1rem;
+		text-align: center;
 		border: 4px solid var(--light-accent);
+	}
+
+	.club-img {
+		width: 100%;
+		aspect-ratio: 1/1;
 	}
 </style>

@@ -1,5 +1,5 @@
 import { error, redirect } from '@sveltejs/kit';
-import User from '../../../models/AdminModel';
+import User from '$models/AdminModel';
 import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import { MONGO_URL } from '$env/static/private';

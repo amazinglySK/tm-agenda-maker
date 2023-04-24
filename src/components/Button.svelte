@@ -1,8 +1,13 @@
 <script>
 	export let handler;
+	export let formaction;
 </script>
 
-<button on:click={handler} class="sub"><slot /></button>
+{#if formaction}
+	<button {formaction} class="sub"><slot /></button>
+{:else}
+	<button on:click={handler} class="sub"><slot /></button>
+{/if}
 
 <style>
 	.sub {

@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import Meeting from './src/models/MeetingModel.js';
+import Meeting from '$models/MeetingModel.js';
 import mongoose from 'mongoose';
 
 config();

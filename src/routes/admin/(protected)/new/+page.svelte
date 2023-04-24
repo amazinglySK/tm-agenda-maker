@@ -2,32 +2,30 @@
 	import Button from '$components/Button.svelte';
 	import FormGroup from '$components/FormGroup.svelte';
 	import Header from '$components/Header.svelte';
-	let speaker, timer;
-
-	const handleFinalize = () => {};
 </script>
 
 <Header admin={true} />
 
 <main>
-	<FormGroup>
-		<label for="name">Speaker</label>
-		<select bind:value={speaker} name="Speaker role" id="speaker">
-			<option value="Shashwat">Shashwat</option>
-			<option value="Tanmeen">Tanmeen</option>
-			<option value="Faizaan">Faizaan</option>
-		</select>
-	</FormGroup>
-	<FormGroup>
-		<label for="meeting_code">Timer</label>
-		<input type="text" bind:value={timer} name="timer" id="timer" />
-	</FormGroup>
-
-	<Button handler={handleFinalize} class="sub">Finalize</Button>
+	<form method="POST" action="?/create">
+		<FormGroup>
+			<label for="club_name">Club Name</label>
+			<input type="text" name="club_name" id="club_name" />
+		</FormGroup>
+		<FormGroup>
+			<label for="club_location">Location</label>
+			<input type="text" name="club_location" id="club_location" />
+		</FormGroup>
+		<FormGroup>
+			<label for="image_link">Image Link</label>
+			<input type="text" name="image_link" id="image_link" />
+		</FormGroup>
+		<Button formaction="?/create">Create</Button>
+	</form>
 </main>
 
 <style>
-	main {
+	form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;

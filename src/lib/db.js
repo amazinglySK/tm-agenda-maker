@@ -1,5 +1,5 @@
-import Meeting from '../models/MeetingModel';
-import User from '../models/AdminModel';
+import Meeting from '$models/MeetingModel';
+import User from '$models/AdminModel';
 import mongoose from 'mongoose';
 import { MONGO_URL } from '$env/static/private';
 

@@ -1,7 +1,6 @@
 <script>
 	import FormGroup from '$components/FormGroup.svelte';
 	import Button from '$components/Button.svelte';
-	import { goto } from '$app/navigation';
 	import Header from '$components/Header.svelte';
 
 	export let form;
@@ -19,7 +18,7 @@
 			<label for="password">Password</label>
 			<input type="text" name="password" id="password" />
 		</FormGroup>
-		<button formaction="?/login">Login</button>
+		<Button formaction="?/login">Login</Button>
 	</form>
 	{#if form?.success}
 		<p>Successfully logged in</p>
@@ -40,14 +39,5 @@
 
 	main {
 		text-align: center;
-	}
-
-	button {
-		font-family: 'Calistoga', cursive;
-		padding: 0.5rem;
-		font-size: 1rem;
-		border: 3px solid var(--light-accent);
-		border-radius: 5px;
-		background-color: var(--brand-color);
 	}
 </style>
