@@ -1,5 +1,8 @@
 <script>
 	import Header from '$components/Header.svelte';
+	import ClubCard from '$components/ClubCard.svelte';
+
+	export let data;
 </script>
 
 <Header admin={true} />
@@ -10,24 +13,14 @@
 		<a href="/admin/new">Create a new club</a>
 	</div>
 	<div class="clubs">
-		<div class="club-card">
-			<img
-				src="https://toastmasterscdn.azureedge.net/medias/images/brand-items/gavelclublogored.png"
-				alt=""
-				class="club-img"
+		{#each data.clubs as club}
+			<ClubCard
+				club_name={club.name}
+				location={club.club_location}
+				img_link={club.image_link}
+				club_id={club.club_id}
 			/>
-			<h3>Rising Stars Gavel Club</h3>
-			<p>Sharjah</p>
-		</div>
-		<div class="club-card">
-			<img
-				src="https://toastmasterscdn.azureedge.net/medias/images/brand-items/gavelclublogored.png"
-				alt=""
-				class="club-img"
-			/>
-			<h3>Rising Stars Gavel Club</h3>
-			<p>Sharjah</p>
-		</div>
+		{/each}
 	</div>
 	<a href="/admin/join">Join a club</a>
 </main>
