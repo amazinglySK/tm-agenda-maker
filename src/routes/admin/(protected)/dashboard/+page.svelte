@@ -50,15 +50,4 @@
 		margin: auto;
 		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	}
-
-	.club-card {
-		padding: 1rem;
-		text-align: center;
-		border: 4px solid var(--light-accent);
-	}
-
-	.club-img {
-		width: 100%;
-		aspect-ratio: 1/1;
-	}
 </style>
