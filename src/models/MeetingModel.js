@@ -5,6 +5,7 @@ const MeetingSchema = new Schema({
 	date: Date,
 	uid: String,
 	roles: { type: Object },
+	club_id: { type: String, ref: 'club' },
 	meeting_header_text: String,
 	meeting_footer_text: String
 });

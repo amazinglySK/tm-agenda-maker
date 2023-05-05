@@ -1,0 +1,43 @@
+<script>
+	import Header from '$components/Header.svelte';
+
+	export let data;
+</script>
+
+<Header admin={true} />
+
+<main>
+	<div class="greeting">
+		<h2>Hello User</h2>
+		<a href="/admin/meeting">Create a new meeting</a>
+	</div>
+	<ul class="meetings">
+		<li><a href="/admin/meeting/id">Meeting no. 162</a></li>
+		{#each data.meetings as meeting}
+			<li><a href="/admin/meeting/id">Meeting no. {meeting.number}</a></li>
+		{/each}
+	</ul>
+</main>
+
+<style>
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		max-width: 60%;
+		margin: 1rem auto;
+	}
+
+	.greeting {
+		width: 80%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.meetings {
+		width: 80%;
+	}
+</style>

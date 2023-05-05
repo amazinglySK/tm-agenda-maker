@@ -1,0 +1,10 @@
+{
+	"Speaker": true,
+	"Timer": true,
+	"Book Master": true,
+	"Phrase Master": true,
+	"Word Master": true,
+	"Grammarian": true,
+	"Ah Counter": true,
+	"General Evaluator": true
+}
