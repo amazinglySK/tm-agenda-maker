@@ -9,12 +9,14 @@
 <main>
 	<div class="greeting">
 		<h2>Hello User</h2>
-		<a href="/admin/meeting">Create a new meeting</a>
+		<a href={`/admin/dashboard/${data.id}/new_meeting`}>Create a new meeting</a>
 	</div>
 	<ul class="meetings">
-		<li><a href="/admin/meeting/id">Meeting no. 162</a></li>
+		{#if data.meetings.length == 0}
+			<p>Nothing to show here</p>
+		{/if}
 		{#each data.meetings as meeting}
-			<li><a href="/admin/meeting/id">Meeting no. {meeting.number}</a></li>
+			<li><a href={`/admin/meeting/${meeting.uid}`}>Meeting no. {meeting.number}</a></li>
 		{/each}
 	</ul>
 </main>
