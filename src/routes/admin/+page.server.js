@@ -1,7 +1,6 @@
-import mongoose from 'mongoose';
+import { connect, disconnect } from '$lib/db.js';
 import bcrypt from 'bcrypt';
 import User from '$models/AdminModel';
-import { MONGO_URL } from '$env/static/private';
 import { JWT_SECRET } from '$env/static/private';
 import { error, redirect } from '@sveltejs/kit';
 import { sign } from 'jsonwebtoken';
@@ -11,7 +10,7 @@ export const actions = {
 		const data = await request.formData();
 		const username = data.get('username');
 		const password = data.get('password');
-		await mongoose.connect(MONGO_URL);
+		await connect();
 		const user = await User.findOne({ username });
 
 		if (!user) {
@@ -19,7 +18,7 @@ export const actions = {
 		}
 
 		if (await bcrypt.compare(password, user.password)) {
-			await mongoose.disconnect();
+			await disconnect();
 			let token = sign({ username: user.username, name: user.name, id: user._id }, JWT_SECRET);
 			cookies.set('token', token, {
 				path: '/',

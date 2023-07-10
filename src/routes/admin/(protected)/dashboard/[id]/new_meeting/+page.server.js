@@ -1,11 +1,10 @@
 import { error, redirect } from '@sveltejs/kit';
-import mongoose from 'mongoose';
-import { MONGO_URL } from '$env/static/private';
 import Meeting from '$models/MeetingModel';
+import { connect, disconnect } from '$lib/db.js';
 
 export const actions = {
 	create: async ({ request, params }) => {
-		await mongoose.connect(MONGO_URL);
+		await connect();
 		const club_id = params.id;
 		const data = await request.formData();
 		const meetingNo = Number(data.get('meeting_no'));
@@ -29,7 +28,7 @@ export const actions = {
 		});
 
 		await newMeeting.save();
-		await mongoose.disconnect();
+		await disconnect();
 		throw redirect(303, `/admin/dashboard/${club_id}`);
 	}
 };

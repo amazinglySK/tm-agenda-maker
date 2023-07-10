@@ -8,7 +8,7 @@
 
 <header>
 	<h1 class="title">{heading}</h1>
-	{#if !admin}
+	{#if admin}
 		<div class="meeting-info">
 			<p>Meeting no. 165</p>
 			<p>Sunday 16/04/2023</p>

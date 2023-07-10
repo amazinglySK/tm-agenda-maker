@@ -35,3 +35,11 @@ export const loginUser = async (name, password) => {
 		return false;
 	}
 };
+
+export const connect = async () => {
+	await mongoose.connect(MONGO_URL);
+};
+
+export const disconnect = async () => {
+	await mongoose.disconnect();
+};

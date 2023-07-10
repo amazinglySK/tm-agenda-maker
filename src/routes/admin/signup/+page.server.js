@@ -1,8 +1,7 @@
 import { error, redirect } from '@sveltejs/kit';
 import User from '$models/AdminModel';
 import bcrypt from 'bcrypt';
-import mongoose from 'mongoose';
-import { MONGO_URL } from '$env/static/private';
+import { connect, disconnect } from '$lib/db.js';
 
 export const actions = {
 	signup: async ({ request }) => {
@@ -11,7 +10,7 @@ export const actions = {
 		const username = data.get('username');
 		const password = data.get('password');
 
-		await mongoose.connect(MONGO_URL);
+		await connect();
 		// TODO : Do some code validation
 		const user = await User.findOne({ $or: [{ username: username }, { name: name }] });
 
@@ -22,7 +21,7 @@ export const actions = {
 		const pwd = await bcrypt.hash(password, 10);
 		let newUser = new User({ name, username, password: pwd });
 		await newUser.save();
-		await mongoose.disconnect();
+		await disconnect();
 		throw redirect(303, '/admin/');
 	}
 };

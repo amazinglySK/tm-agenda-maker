@@ -1,8 +1,7 @@
 import { error, redirect } from '@sveltejs/kit';
 import User from '$models/AdminModel';
 import Club from '$models/ClubModel';
-import mongoose from 'mongoose';
-import { MONGO_URL } from '$env/static/private';
+import { connect, disconnect } from '$lib/db.js';
 
 export const actions = {
 	create: async ({ request, locals }) => {
@@ -11,7 +10,7 @@ export const actions = {
 		const club_location = data.get('club_location');
 		const image_link = data.get('image_link');
 
-		await mongoose.connect(MONGO_URL);
+		await connect();
 
 		let new_club = new Club({ name: club_name, club_location, image_link });
 		let saved = await new_club.save();
@@ -19,7 +18,7 @@ export const actions = {
 		user.clubs.push(saved._id);
 		await user.save();
 
-		await mongoose.disconnect();
+		await disconnect();
 		throw redirect(303, '/admin/dashboard');
 	}
 };
