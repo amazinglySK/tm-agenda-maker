@@ -8,7 +8,7 @@
 		roles.set(data.roles_loaded);
 	}
 
-	let max_roles = 1;
+	let max_roles = data.max_choice;
 </script>
 
 <Header />

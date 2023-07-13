@@ -5,25 +5,25 @@ import { MONGO_URL } from '$env/static/private';
 
 export const getAllAvailableRoles = async (meeting_id) => {
 	try {
-		await mongoose.connect(MONGO_URL);
+		await connect();
 		const meeting = await Meeting.findOne({ uid: meeting_id });
 		if (!meeting) {
 			console.log('No meeting found');
 			return false;
 		}
-		const roles = meeting.available_roles;
-		await mongoose.disconnect();
-		return roles;
+		const roles = await meeting.available_roles;
+		await disconnect();
+		return [roles, meeting.max_choice];
 	} catch (err) {
 		console.error(err);
-		return false;
+		return [false, false];
 	}
 };
 
 export const loginUser = async (name, password) => {
 	try {
 		await mongoose.connect(MONGO_URL);
-		const user = await User.findOne({ name: username });
+		const user = await User.findOne({ name: name });
 		if (!user) {
 			console.log('No user found');
 			return false;
