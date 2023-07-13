@@ -1,5 +1,6 @@
 import Meeting from '$models/MeetingModel';
 import { connect, disconnect } from '$lib/db.js';
+import { redirect } from '@sveltejs/kit';
 
 export async function load({ params }) {
 	const { id } = params;
@@ -13,9 +14,17 @@ export async function load({ params }) {
 }
 
 export const actions = {
-	// TODO : Finish the save logic using a for loop
-	save: async ({ request, response }) => {
+	save: async ({ request, params }) => {
+		await connect();
+		const meeting_id = params.id;
+		const meeting = await Meeting.findOne({ uid: meeting_id });
 		const data = await request.formData();
-		const speaker = data.get('Speaker');
+		for (const [role, name] of data) {
+			meeting.role_players[role] = name;
+		}
+		meeting.markModified('role_players');
+		await meeting.save();
+		await disconnect();
+		throw redirect(303, '/admin/dashboard/');
 	}
 };

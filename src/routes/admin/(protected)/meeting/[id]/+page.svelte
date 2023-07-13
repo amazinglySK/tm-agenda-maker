@@ -17,14 +17,6 @@
 <main>
 	<form method="POST" action="?/save">
 		<h1>Choose the role players</h1>
-		<!-- <FormGroup>
-			<label for="speaker">Speaker</label>
-			<select name="speaker" id="speaker">
-				<option value="Shashwat">Shashwat</option>
-				<option value="Faizaan">Faizaan</option>
-			</select>
-			<button on:click={handleClick}>Add member of your choice</button>
-		</FormGroup> -->
 		{#each Object.entries(data.meeting.roles) as [role, role_players]}
 			<FormGroup>
 				<label for={role}>{role}</label>
@@ -32,9 +24,12 @@
 					{#each role_players as rp}
 						<option value={rp}>{rp}</option>
 					{/each}
+					<option value={data.meeting.role_players[role]} selected
+						>{data.meeting.role_players[role]}</option
+					>
 				</select>
 				<button class="add-mem-btn" on:click|preventDefault={handleClick(role)}
-					>Add member of your choice</button
+					>Assign member manually</button
 				>
 			</FormGroup>
 		{/each}

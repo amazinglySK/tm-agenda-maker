@@ -11,12 +11,14 @@ export const actions = {
 		const maxChoice = Number(data.get('max_choice'));
 		const date = new Date(data.get('date'));
 		const roles = {};
+		const role_players = {};
 		data.delete('meeting_no');
 		data.delete('max_choice');
 		data.delete('date');
 		for (const [role, checked] of data.entries()) {
 			if (checked === 'on') {
 				roles[role] = [];
+				role_players[role] = '';
 			}
 		}
 		const newMeeting = new Meeting({
@@ -24,6 +26,7 @@ export const actions = {
 			date,
 			max_choice: maxChoice,
 			roles,
+			role_players,
 			club_id
 		});
 

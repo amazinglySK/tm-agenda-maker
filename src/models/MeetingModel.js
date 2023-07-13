@@ -7,7 +7,7 @@ const MeetingSchema = new Schema({
 	max_choice: Number,
 	uid: { type: String, default: nanoid(8), required: true },
 	roles: { type: Object },
-	// TODO: Add a selected roles field
+	role_players: { type: Object },
 	club_id: { type: String, ref: 'club' }
 });
 

@@ -8,7 +8,7 @@
 
 <main>
 	<div class="greeting">
-		<h2>Hello User</h2>
+		<h2>Hello {data.name}</h2>
 		<a href={`/admin/dashboard/${data.id}/new_meeting`}>Create a new meeting</a>
 	</div>
 	<ul class="meetings">

@@ -22,7 +22,7 @@
 	<form action="?/create" method="POST">
 		<FormGroup>
 			<label for="meeting_no">Meeting no.</label>
-			<input type="text" id="meeting_no" name="max_choice" />
+			<input type="text" id="meeting_no" name="meeting_no" />
 		</FormGroup>
 		<FormGroup>
 			<label for="date">Maximum Choice</label>
