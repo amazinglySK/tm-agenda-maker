@@ -24,6 +24,7 @@
 					{#each role_players as rp}
 						<option value={rp}>{rp}</option>
 					{/each}
+					<!-- TODO : Add an none option -->
 					<option value={data.meeting.role_players[role]} selected
 						>{data.meeting.role_players[role]}</option
 					>

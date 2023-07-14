@@ -2,6 +2,7 @@
 	import Role from './Role.svelte';
 	import { roles } from '../roleStore';
 	export let max;
+	export let meeting_id;
 	$: select_count = $roles.reduce((acc, curr) => acc + Number(curr.selected), 0);
 </script>
 
@@ -11,7 +12,7 @@
 	{/each}
 </div>
 {#if select_count == max}
-	<a href="/details">Next -></a>
+	<a href={`/${meeting_id}/details`}>Next -></a>
 {/if}
 
 <style>
