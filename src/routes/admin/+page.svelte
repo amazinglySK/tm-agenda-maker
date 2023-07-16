@@ -6,7 +6,7 @@
 	export let form;
 </script>
 
-<Header admin={true} />
+<Header />
 
 <main>
 	<form method="POST" action="?/login">

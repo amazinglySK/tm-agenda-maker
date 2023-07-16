@@ -7,6 +7,7 @@ export async function load(event) {
 	let clubs = await user.club_aggr;
 	await disconnect();
 	return {
-		clubs
+		clubs,
+		name: user.name
 	};
 }

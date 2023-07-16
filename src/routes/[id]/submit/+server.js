@@ -12,7 +12,10 @@ export async function POST({ request, params }) {
 		}
 		const meeting = await Meeting.findOne({ uid: params.id });
 		for (const i of roles) {
-			// TODO : Add a additional check if the name is already in roster
+            const in_roster = meeting.roles[i].includes(name) || Object.values(meeting.role_players).includes(name)
+			if (in_roster) {
+				continue;
+			}
 			meeting.roles[i].push(name);
 		}
 		meeting.markModified('roles');

@@ -20,7 +20,9 @@ export const actions = {
 		const meeting = await Meeting.findOne({ uid: meeting_id });
 		const data = await request.formData();
 		for (const [role, name] of data) {
-			// TODO : Check if it's not "none" chosen
+			if (name === 'None') {
+				continue;
+			}
 			meeting.role_players[role] = name;
 		}
 		meeting.markModified('role_players');

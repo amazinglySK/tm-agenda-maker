@@ -8,6 +8,7 @@
 
 <main>
 	<form action="">
+		<!-- TODO : Work on the joining logic -->
 		<FormGroup>
 			<label for="club_code">Club Code</label>
 			<input type="text" name="club_code" id="club_code" />

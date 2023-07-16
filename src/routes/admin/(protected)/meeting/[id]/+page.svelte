@@ -9,9 +9,13 @@
 		let new_entry = prompt('Enter the name of the member : ');
 		data.meeting.roles[role] = [...data.meeting.roles[role], new_entry];
 	};
+	let date = new Date(data.meeting.date);
 </script>
 
-<Header admin={true} />
+<Header admin={true}>
+	<p class="info">Meeting passcode : {data.meeting.passcode}</p>
+	<p class="info">Date : {date.toDateString()}</p>
+</Header>
 <main>
 	<form method="POST" action="?/save">
 		<h1>Choose the role players</h1>
@@ -22,19 +26,21 @@
 					{#each role_players as rp}
 						<option value={rp}>{rp}</option>
 					{/each}
-					<!-- TODO : Add an none option -->
 					<option value={data.meeting.role_players[role]} selected
 						>{data.meeting.role_players[role]}</option
 					>
+					<option value="None">None</option>
 				</select>
 				<button class="add-mem-btn" on:click|preventDefault={handleClick(role)}
 					>Assign member manually</button
 				>
 			</FormGroup>
 		{/each}
-
-		<Button formaction="?/save">Save Changes</Button>
-		<Button formaction="?/delete">Delete Meeting</Button>
+		<div class="buttons">
+			<!-- TODO : Change the colour of the delete button to a red shade -->
+			<Button formaction="?/save">Save Changes</Button>
+			<Button formaction="?/delete">Delete Meeting</Button>
+		</div>
 	</form>
 </main>
 
@@ -67,5 +73,9 @@
 
 	.add-mem-btn:hover {
 		background-color: var(--brand-color);
+	}
+
+	.info {
+		color: var(--light-shades);
 	}
 </style>

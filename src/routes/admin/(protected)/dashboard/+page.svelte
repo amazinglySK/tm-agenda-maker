@@ -9,7 +9,7 @@
 
 <main>
 	<div class="greeting">
-		<h2>Hello User</h2>
+		<h2>Hello {data.name}</h2>
 		<a href="/admin/new">Create a new club</a>
 	</div>
 	<div class="clubs">
