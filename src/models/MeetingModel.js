@@ -5,7 +5,7 @@ const MeetingSchema = new Schema({
 	number: Number,
 	date: Date,
 	max_choice: Number,
-	// TODO : Add a passcode field
+	passcode: { type: String, default: nanoid(6), required: true },
 	uid: { type: String, default: nanoid(8), required: true },
 	roles: { type: Object },
 	role_players: { type: Object },

@@ -10,8 +10,10 @@
 	export let data;
 
 	const handleSubmit = async () => {
-		if (!checkMeetingCode(meeting_code)) {
+		const check = await checkMeetingCode(data.meeting_id, meeting_code);
+		if (!check) {
 			alert('Incorrect meeting code');
+			return;
 		}
 		let selectedRoles = $roles.filter((r) => r.selected);
 		let roleNames = selectedRoles.map((r) => r.role);

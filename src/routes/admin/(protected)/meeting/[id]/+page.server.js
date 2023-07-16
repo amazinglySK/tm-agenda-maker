@@ -27,5 +27,13 @@ export const actions = {
 		await meeting.save();
 		await disconnect();
 		throw redirect(303, '/admin/dashboard/');
+	},
+
+	delete: async ({ params }) => {
+		await connect();
+		const meeting_id = params.id;
+		await Meeting.deleteOne({ uid: meeting_id });
+		await disconnect();
+		throw redirect(303, '/admin/dashboard/');
 	}
 };

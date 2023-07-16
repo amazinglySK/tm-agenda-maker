@@ -6,9 +6,7 @@
 	export let data;
 
 	const handleClick = (role) => {
-		console.log(role);
 		let new_entry = prompt('Enter the name of the member : ');
-		console.log(data);
 		data.meeting.roles[role] = [...data.meeting.roles[role], new_entry];
 	};
 </script>
@@ -36,6 +34,7 @@
 		{/each}
 
 		<Button formaction="?/save">Save Changes</Button>
+		<Button formaction="?/delete">Delete Meeting</Button>
 	</form>
 </main>
 
