@@ -4,7 +4,9 @@
 	export let data;
 </script>
 
-<Header admin={true} />
+<Header admin={true}>
+	<p>{data.club_invite_code}</p>
+</Header>
 
 <main>
 	<div class="greeting">

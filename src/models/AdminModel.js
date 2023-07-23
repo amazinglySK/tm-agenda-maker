@@ -1,5 +1,5 @@
 import { SchemaTypes } from 'mongoose';
-import { Schema, model } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 import ClubModel from './ClubModel';
 
 const UserSchema = new Schema({
@@ -22,6 +22,6 @@ UserSchema.virtual('club_aggr').get(async function () {
 	return clubs;
 });
 
-const UserModel = model('admin', UserSchema);
+const UserModel = models.admin || model('admin', UserSchema);
 
 export default UserModel;

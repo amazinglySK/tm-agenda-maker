@@ -1,12 +1,20 @@
 import { Schema, model, models } from 'mongoose';
 import { nanoid } from 'nanoid';
 
+const createPasscode = () => {
+	return nanoid(6);
+};
+
+const createUID = () => {
+	return nanoid(8);
+};
+
 const MeetingSchema = new Schema({
 	number: Number,
 	date: Date,
 	max_choice: Number,
-	passcode: { type: String, default: nanoid(6), required: true },
-	uid: { type: String, default: nanoid(8), required: true },
+	passcode: { type: String, default: createPasscode, required: true },
+	uid: { type: String, default: createUID, required: true },
 	roles: { type: Object },
 	role_players: { type: Object },
 	club_id: { type: String, ref: 'club' }
@@ -21,6 +29,6 @@ MeetingSchema.virtual('available_roles').get(function () {
 	return roles;
 });
 
-const MeetingModel = models['meeting'] ?? model('meeting', MeetingSchema);
+const MeetingModel = models['meeting'] || model('meeting', MeetingSchema);
 
 export default MeetingModel;

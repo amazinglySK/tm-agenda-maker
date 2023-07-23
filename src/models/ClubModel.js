@@ -1,14 +1,24 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 import { nanoid } from 'nanoid';
+
+const createClubID = () => {
+	return nanoid(10);
+};
+
+const createClubInvite = () => {
+	return nanoid(8);
+};
 
 const ClubSchema = new Schema({
 	name: String,
-	club_id: { type: String, default: nanoid(10), required: true },
-	invite_code: { type: String, default: nanoid(8), required: true },
+	club_id: { type: String, default: createClubID, required: true },
+	invite_code: { type: String, default: createClubInvite, required: true },
 	club_location: String,
 	image_link: String
 });
 
-const ClubModel = model('club', ClubSchema);
+// TODO : Add a pre() for when a club is deleted it's reference is deleted in AdminModel
+
+const ClubModel = models.club || model('club', ClubSchema);
 
 export default ClubModel;
