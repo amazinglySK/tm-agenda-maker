@@ -7,6 +7,7 @@
 
 	const handleClick = (role) => {
 		let new_entry = prompt('Enter the name of the member : ');
+		// TODO : If the entry is null don't add it (!new_entry) check
 		data.meeting.roles[role] = [...data.meeting.roles[role], new_entry];
 	};
 	let date = new Date(data.meeting.date);
@@ -14,6 +15,7 @@
 
 <Header admin={true}>
 	<p class="info">Meeting passcode : {data.meeting.passcode}</p>
+	<!-- TODO : Display the link to be given -->
 	<p class="info">Date : {date.toDateString()}</p>
 </Header>
 <main>
