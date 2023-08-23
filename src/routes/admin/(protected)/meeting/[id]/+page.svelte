@@ -7,7 +7,9 @@
 
 	const handleClick = (role) => {
 		let new_entry = prompt('Enter the name of the member : ');
-		// TODO : If the entry is null don't add it (!new_entry) check
+		if (!new_entry) {
+			return;
+		}
 		data.meeting.roles[role] = [...data.meeting.roles[role], new_entry];
 	};
 	let date = new Date(data.meeting.date);
@@ -15,7 +17,7 @@
 
 <Header admin={true}>
 	<p class="info">Meeting passcode : {data.meeting.passcode}</p>
-	<!-- TODO : Display the link to be given -->
+	<p>Link to be given : <a href={`/${data.meeting.uid}`}>{data.meeting.uid}</a></p>
 	<p class="info">Date : {date.toDateString()}</p>
 </Header>
 <main>
@@ -39,7 +41,6 @@
 			</FormGroup>
 		{/each}
 		<div class="buttons">
-			<!-- TODO : Change the colour of the delete button to a red shade -->
 			<Button formaction="?/save">Save Changes</Button>
 			<Button formaction="?/delete">Delete Meeting</Button>
 		</div>

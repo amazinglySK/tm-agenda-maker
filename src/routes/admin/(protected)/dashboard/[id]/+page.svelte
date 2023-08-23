@@ -1,5 +1,6 @@
 <script>
 	import Header from '$components/Header.svelte';
+	import Button from '$components/Button.svelte';
 
 	export let data;
 </script>
@@ -21,6 +22,9 @@
 			<li><a href={`/admin/meeting/${meeting.uid}`}>Meeting no. {meeting.number}</a></li>
 		{/each}
 	</ul>
+	<form action="?/delete" method="POST">
+		<Button formaction="?/delete">Delete Club</Button>
+	</form>
 </main>
 
 <style>

@@ -1,6 +1,8 @@
 import Meeting from '$models/MeetingModel.js';
 import Club from '$models/ClubModel.js';
 import { connect, disconnect } from '$lib/db.js';
+import ClubModel from '$models/ClubModel.js';
+import { redirect } from '@sveltejs/kit';
 
 export async function load({ locals, params }) {
 	await connect();
@@ -16,4 +18,12 @@ export async function load({ locals, params }) {
 	return { name: locals.user.name, meetings, id: params.id, club_invite_code: club.invite_code };
 }
 
-// Add a function to delete clubs
+export const actions = {
+	delete: async ({ params }) => {
+		const club_id = params.id;
+		await connect();
+		await ClubModel.findOneAndDelete({ club_id });
+		await disconnect();
+		throw redirect(303, '/admin/dashboard');
+	}
+};

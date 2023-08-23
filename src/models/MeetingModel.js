@@ -17,7 +17,12 @@ const MeetingSchema = new Schema({
 	uid: { type: String, default: createUID, required: true },
 	roles: { type: Object },
 	role_players: { type: Object },
-	club_id: { type: String, ref: 'club' }
+	club_id: { type: String, ref: 'club' },
+	expireAt: {
+		type: Date,
+		default: new Date(),
+		expires: 4 * 7 * 24 * 60 * 60 // 4 weeks in seconds
+	}
 });
 
 MeetingSchema.virtual('available_roles').get(function () {

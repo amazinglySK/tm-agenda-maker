@@ -1,5 +1,7 @@
 import { Schema, model, models } from 'mongoose';
+import AdminModel from './AdminModel';
 import { nanoid } from 'nanoid';
+import MeetingModel from './MeetingModel';
 
 const createClubID = () => {
 	return nanoid(10);
@@ -17,8 +19,23 @@ const ClubSchema = new Schema({
 	image_link: String
 });
 
-// TODO : Add a pre() for when a club is deleted it's reference is deleted in AdminModel
-
+ClubSchema.post('findOneAndDelete', async function (doc) {
+	let doc_id = doc._id;
+	let club_id = doc.club_id;
+	try {
+		const res = await AdminModel.updateMany(
+			{ clubs: doc_id },
+			{
+				$pullAll: {
+					clubs: [doc_id]
+				}
+			}
+		);
+		await MeetingModel.deleteMany({ club_id });
+	} catch (err) {
+		console.log(err);
+	}
+});
 const ClubModel = models.club || model('club', ClubSchema);
 
 export default ClubModel;
