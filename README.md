@@ -1,20 +1,12 @@
-# create-svelte
+# tm-agenda-maker ⚡
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+> This project is still in beta
 
-## Creating a project
+tm-agenda-maker is a project made to simplify toastmaster meeting agendas. With polling and other management options, club managers can cruise through making the agenda.
 
-If you're seeing this, you've probably already done this step. Congrats!
+With the hassle of meeting roles taken away, club managers can now focus on what really matters to them - the quality.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
+## Startup
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -25,14 +17,14 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+## Screenshots
 
-To create a production version of your app:
+![](./images/image-1.png)
 
-```bash
-npm run build
-```
+![](./images/image-2.png)
 
-You can preview the production build with `npm run preview`.
+![](./images/image-3.png)
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+![](./images/image-4.png)
+
+![](./images/image-5.png)

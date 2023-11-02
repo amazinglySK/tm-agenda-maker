@@ -8,21 +8,16 @@
 <Header admin={true} />
 
 <main>
-	<div class="greeting">
-		<h2>Hello {data.name}</h2>
-		<a href="/admin/new">Create a new club</a>
-	</div>
-	<div class="clubs">
-		{#each data.clubs as club}
+	<div class="invites">
+		<!-- {#each data.clubs as club}
 			<ClubCard
 				club_name={club.name}
 				location={club.club_location}
 				img_link={club.image_link}
 				club_id={club.club_id}
 			/>
-		{/each}
-    </div>
-	<a href="/admin/join">Join a club</a>
+		{/each} -->
+	</div>
 </main>
 
 <style>
@@ -36,18 +31,10 @@
 		margin: 1rem auto;
 	}
 
-	.greeting {
-		width: 80%;
+	.invites {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.clubs {
-		display: grid;
-		gap: 2rem;
+		flex-direction: column;
 		width: 80%;
 		margin: auto;
-		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	}
 </style>
